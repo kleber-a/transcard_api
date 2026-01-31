@@ -36,18 +36,6 @@ public interface UserRepository extends JpaRepository<User, Long> {
             Pageable pageable
     );
 
-
-//    @Modifying
-//    @Query(value = "UPDATE users SET full_name = :name, email = :email, password = :password WHERE id = :id", nativeQuery = true)
-//    void updateUser(
-//            @Param("id") Long id,
-//            @Param("name") String name,
-//            @Param("email") String email,
-//            @Param("password") String password
-//    );
-
-
-
     boolean existsByEmail(String email);
 
     UserDetails findByEmail(String email);

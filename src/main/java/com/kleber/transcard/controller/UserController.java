@@ -10,7 +10,8 @@ import io.swagger.v3.oas.annotations.Operation;
 import io.swagger.v3.oas.annotations.Parameter;
 import io.swagger.v3.oas.annotations.media.Content;
 import io.swagger.v3.oas.annotations.media.Schema;
-import io.swagger.v3.oas.annotations.parameters.RequestBody;
+import org.springframework.http.HttpStatus;
+import org.springframework.web.bind.annotation.RequestBody;
 import io.swagger.v3.oas.annotations.responses.ApiResponse;
 import io.swagger.v3.oas.annotations.responses.ApiResponses;
 import io.swagger.v3.oas.annotations.tags.Tag;
@@ -67,15 +68,12 @@ public class UserController {
         return userService.getAllUsers(name, pageable);
     }
 
-    // ========================= CREATE USER =========================
+    // CREATE USER
     @Operation(
             summary = "Criar usuário",
             description = "Cria um novo usuário com nome, email, senha"
     )
     @ApiResponses(value = {
-//            @ApiResponse(responseCode = "200", description = "Usuário criado com sucesso",
-//                    content = @Content(mediaType = "application/json",
-//                            schema = @Schema(implementation = UserDTO.class))),
             @ApiResponse(responseCode = "200", description = "Usuário criado com sucesso", content = @Content(schema = @Schema(implementation = UserDTO.class))),
             @ApiResponse(responseCode = "400", description = "Email já cadastrado",
                     content = @Content(schema = @Schema(
@@ -109,18 +107,14 @@ public class UserController {
                     )))
     })
     @PostMapping
-    public UserDTO create(
-            @RequestBody(
-                    description = "Dados do usuário para criação",
-                    required = true,
-                    content = @Content(schema = @Schema(implementation = CreateUserDTO.class))
-            )
-            @org.springframework.web.bind.annotation.RequestBody CreateUserDTO createUserDTO
+    public ResponseEntity<UserDTO> create(
+            @RequestBody( required = true ) CreateUserDTO createUserDTO
     ) {
-        return userService.save(createUserDTO);
+        return ResponseEntity.status(HttpStatus.CREATED)
+                .body(userService.save(createUserDTO));
     }
 
-    // ========================= UPDATE USER =========================
+    // UPDATE USER
     @Operation(summary = "Atualizar usuário", description = "Atualiza os dados de um usuário existente pelo ID")
     @ApiResponses(value = {
             @ApiResponse(responseCode = "200", description = "Usuário atualizado com sucesso", content = @Content(schema = @Schema(implementation = UserDTO.class))),
@@ -158,20 +152,15 @@ public class UserController {
     @PatchMapping("/{id}")
     public UserDTO updateUser(
             @PathVariable Long id,
-            @RequestBody(
-                    description = "Dados do usuário para atualização",
-                    required = true,
-                    content = @Content(schema = @Schema(implementation = UserUpdateDTO.class))
-            )
-            @org.springframework.web.bind.annotation.RequestBody UserUpdateDTO userDTO
+            @RequestBody( required = true )  UserUpdateDTO userDTO
     ) {
         return userService.updateUser(id, userDTO);
     }
 
-    // ========================= DELETE USER =========================
+    // DELETE USER
     @Operation(summary = "Excluir usuário", description = "Remove um usuário pelo ID")
     @ApiResponses(value = {
-            @ApiResponse(responseCode = "200", description = "Usuário removido com sucesso"),
+            @ApiResponse(responseCode = "204", description = "Usuário removido com sucesso"),
             @ApiResponse(responseCode = "401", description = "Token ausente ou inválido",
                     content = @Content(schema = @Schema(
                             implementation = RestErrorMessage.class,
@@ -206,78 +195,6 @@ public class UserController {
     @DeleteMapping("/{id}")
     public ResponseEntity<Void> deleteUser(@PathVariable Long id) {
         userService.deleteUser(id);
-        return ResponseEntity.ok().build();
+        return ResponseEntity.noContent().build();
     }
 }
-
-
-
-
-
-
-
-
-
-
-
-
-//package com.kleber.transcard.controller;
-//
-//import com.kleber.transcard.dto.request.CreateUserDTO;
-//import com.kleber.transcard.dto.response.UserDTO;
-//import com.kleber.transcard.entity.User;
-//import com.kleber.transcard.service.UserService;
-//import org.springframework.data.domain.Page;
-//import org.springframework.data.domain.Pageable;
-//import org.springframework.web.bind.annotation.*;
-//
-//import java.util.List;
-//
-//@RestController
-//@RequestMapping("/users")
-//public class UserController {
-//
-//    private final UserService userService;
-//
-//    public UserController(UserService userService) {
-//        this.userService = userService;
-//    }
-//
-//
-//    @GetMapping
-//    public Page<UserDTO> getAll(
-//            @RequestParam(required = false) String name,
-//            Pageable pageable
-//    ) {
-//        return userService.getAllUsers(name, pageable);
-//    }
-//
-////    @GetMapping("/me")
-////    public UserDTO me(@AuthenticationPrincipal User loggedUser) {
-////        return userService.getMeWithCards(loggedUser);
-////    }
-//
-//    @PostMapping
-//    public UserDTO create(
-//        @RequestBody CreateUserDTO createUserDTO
-//    ) {
-//        return userService.save(createUserDTO);
-//    }
-//
-//
-//    @PatchMapping("/{id}")
-//    public UserDTO updateUser(
-//            @PathVariable Long id,
-//            @RequestBody UserDTO userDTO
-//    ) {
-//        return userService.updateUser(id, userDTO);
-//    }
-//
-//
-//    @DeleteMapping("/{id}")
-//    public void deleteUser(@PathVariable Long id){
-//        userService.deleteUser(id);
-//    }
-//
-//
-//}

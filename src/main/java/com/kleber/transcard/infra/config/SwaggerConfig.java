@@ -10,7 +10,7 @@ import org.springframework.context.annotation.Configuration;
 @Configuration
 @OpenAPIDefinition(
         info = @Info(title = "TransCard API", version = "1.0", description = "API de gerenciamento de usuários e cartões"),
-        security = @SecurityRequirement(name = "bearerAuth") // aplica globalmente se quiser
+        security = @SecurityRequirement(name = "bearerAuth")
 )
 @SecurityScheme(
         name = "bearerAuth",

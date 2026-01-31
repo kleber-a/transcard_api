@@ -58,9 +58,6 @@ public class UserService {
 
         if (userUpdateDTO.name() != null) user.setName(userUpdateDTO.name());
         if (userUpdateDTO.email() != null){
-//            if (userRepository.existsByEmail(userUpdateDTO.email())) {
-//                throw new EmailAlreadyExistsException();
-//            }
             user.setEmail(userUpdateDTO.email());
         }
         if (userUpdateDTO.password() != null && !userUpdateDTO.password().isEmpty()) {

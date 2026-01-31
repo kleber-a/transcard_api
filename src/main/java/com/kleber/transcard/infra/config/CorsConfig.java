@@ -21,7 +21,7 @@ public class CorsConfig {
         config.setAllowedHeaders(List.of("*"));
         config.addAllowedHeader("*");
         config.addAllowedMethod("*");
-        config.setAllowCredentials(true); // importante para cookies / headers
+        config.setAllowCredentials(true);
 
         UrlBasedCorsConfigurationSource source = new UrlBasedCorsConfigurationSource();
         source.registerCorsConfiguration("/**", config);

@@ -14,17 +14,10 @@ import org.mapstruct.Named;
 @Mapper(componentModel = MappingConstants.ComponentModel.SPRING)
 public interface CardMapper {
 
-    // MapCreateDTO → Card
     @Mapping(target = "id", ignore = true)
-    @Mapping(target = "status", ignore = true) // vamos setar no service
-    @Mapping(target = "user", ignore = true)   // vamos setar no service
+    @Mapping(target = "status", ignore = true)
+    @Mapping(target = "user", ignore = true)
     Card toEntity(CreateCardDTO dto);
-
-    // Entity → DTO
-//    @Mapping(source = "user.id", target = "user.id")
-//    @Mapping(source = "user.name", target = "user.name")
-//    CardDTO toDTO(Card card);
-
 
     @Mapping(target = "user", source = "user", qualifiedByName = "toUserSummary")
     CardDTO toDTO(Card card);
@@ -40,8 +33,6 @@ public interface CardMapper {
         return dto;
     }
 
-
-    // Entity → UserSummaryDTO
     UserSummaryDTO toSummary(User user);
 
 

@@ -25,16 +25,7 @@ public class RestExceptionHandler extends ResponseEntityExceptionHandler {
                 .body(new RestErrorMessage(status, ex.getMessage()));
     }
 
-//    @ExceptionHandler(CommonMethodNotAllowed.class) // fallback
-//    public ResponseEntity<RestErrorMessage> handleGeneric(CommonMethodNotAllowed ex) {
-//        return ResponseEntity
-//                .status(HttpStatus.METHOD_NOT_ALLOWED)
-//                .body(new RestErrorMessage(HttpStatus.METHOD_NOT_ALLOWED, ex.getMessage()));
-//    }
-
-
-    // Fallback para qualquer outro erro inesperado → 500
-    @ExceptionHandler(Exception.class) // fallback
+    @ExceptionHandler(Exception.class)
     public ResponseEntity<RestErrorMessage> handleGeneric(Exception ex) {
 //        logger.error("Erro não tratado", ex);
         return ResponseEntity

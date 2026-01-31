@@ -16,7 +16,7 @@ public interface UserMapper {
 
 
     @Mapping(target = "cards", source = "cards")
-    @Mapping(target = "role", source = "role")  // <- adiciona o role
+    @Mapping(target = "role", source = "role")
     UserDTO loginToDto(User entity);
 
 
