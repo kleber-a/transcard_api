@@ -18,6 +18,7 @@ public interface UserRepository extends JpaRepository<User, Long> {
         WHERE (:name IS NULL 
                OR REPLACE(LOWER(u.full_name), ' ', '') 
                LIKE CONCAT('%', LOWER(REPLACE(:name, ' ', '')), '%'))
+            AND u.role = 'USER'
         ORDER BY u.full_name
     """,
             countQuery = """
@@ -26,6 +27,7 @@ public interface UserRepository extends JpaRepository<User, Long> {
         WHERE (:name IS NULL 
                OR REPLACE(LOWER(u.full_name), ' ', '') 
                LIKE CONCAT('%', LOWER(REPLACE(:name, ' ', '')), '%'))
+               AND u.role = 'USER'
     """,
             nativeQuery = true
     )

@@ -53,7 +53,7 @@ public interface CardRepository extends JpaRepository<Card, Long> {
         SELECT 
             c.id AS id,
             c.card_number AS cardNumber,
-            c.card_name AS cardName,  -- mudou aqui
+            c.card_name AS cardName,
             c.status AS status,
             c.card_type AS typeCard,
             u.id AS userId,

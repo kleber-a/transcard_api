@@ -7,7 +7,7 @@ public class CardDTO {
     private Long id;
     private UserSummaryDTO user;
     private Long cardNumber;
-    private String CardName;
+    private String cardName;
     private Boolean status = true;
     private CardType cardType;
 
@@ -36,11 +36,11 @@ public class CardDTO {
     }
 
     public String getCardName() {
-        return CardName;
+        return cardName;
     }
 
     public void setCardName(String cardName) {
-        CardName = cardName;
+        this.cardName = cardName;
     }
 
     public Boolean getStatus() {

@@ -12,7 +12,7 @@ public class UserCardDTO {
     private Long cardNumber;
 
     @Schema(description = "Nome do cartão", example = "Card3")
-    private String CardName;
+    private String cardName;
 
     @Schema(description = "Status do cartão", example = "true")
     private Boolean status = true;
@@ -39,11 +39,11 @@ public class UserCardDTO {
     }
 
     public String getCardName() {
-        return CardName;
+        return cardName;
     }
 
     public void setCardName(String cardName) {
-        CardName = cardName;
+        this.cardName = cardName;
     }
 
     public Boolean getStatus() {

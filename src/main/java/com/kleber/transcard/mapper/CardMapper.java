@@ -45,24 +45,6 @@ public interface CardMapper {
     UserSummaryDTO toSummary(User user);
 
 
-    // Projeção → DTO
-//    default CardDTO toDto(CardWithUserProjection projection) {
-//        if (projection == null) return null;
-//
-//        CardDTO dto = new CardDTO();
-//        dto.setId(projection.getId());
-//        dto.setCardNumber(projection.getCardNumber());
-//        dto.setCardName(projection.getCardName());
-//        dto.setStatus(projection.getStatus());
-//        dto.setCardType(com.kleber.transcard.entity.enums.CardType.valueOf(projection.getTypeCard()));
-//
-//        // Cria o UserSummaryDTO apenas com id/nome do usuário
-//        UserSummaryDTO userSummary = new UserSummaryDTO();
-//        userSummary.setName(projection.getUserName()); // se quiser, pode adicionar id também
-//        dto.setUser(userSummary);
-//
-//        return dto;
-//    }
     @Mapping(source = "id", target = "id")
     @Mapping(source = "cardNumber", target = "cardNumber")
     @Mapping(source = "cardName", target = "cardName")
