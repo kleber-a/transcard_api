@@ -10,18 +10,39 @@ Criar uma aplicação full-stack para **gerenciar usuários e cartões de transp
 ## 🔹 Funcionalidades Principais
 
 ### 1. Gestão de Usuários
-- Consultar usuários (admin vê todos, usuário comum vê apenas o próprio).  
-- Incluir usuário.  
-- Alterar usuário (nome, email e senha).  
-- Remover usuário (restrito a admin).  
-- Perfis de acesso: **ADMIN** e **USER**.  
+- **Consultar usuários:**  
+  - Admin vê todos os usuários.  
+  - Usuário comum vê apenas o próprio cadastro.
+- **Incluir usuário:**  
+  - Permite criar novos usuários com nome, email e senha.
+- **Alterar usuário:**  
+  - Usuário pode alterar seu **nome e senha**.  
+  - Admin pode alterar **nome, email e senha** de qualquer usuário.
+- **Remover usuário:**  
+  - Apenas usuários com perfil **ADMIN** podem remover outros usuários.
+- **Perfis de acesso:**  
+  - **ADMIN** – acesso total às funcionalidades.  
+  - **USER** – acesso limitado às próprias informações e cartões.
+
 
 ### 2. Gestão de Cartões
-- Adicionar e remover cartões de usuários.  
-- Consultar cartões (todos ou próprios).  
-- Ativar/Inativar cartões.  
-- Tipos de cartão: **COMUM, ESTUDANTE, TRABALHADOR**.  
-- Relacionamento: 1 usuário → N cartões.  
+- **Adicionar e remover cartões:**  
+  - Apenas **admins** podem adicionar novos cartões a um usuário.  
+  - Apenas **admins** podem remover cartões de um usuário.
+- **Consultar cartões:**  
+  - Admin pode consultar todos os cartões.  
+  - Usuário comum vê apenas os seus próprios cartões.
+- **Ativar/Inativar cartões:**  
+  - Tanto admins quanto usuários podem alterar o status de cartões.  
+  - Usuário comum só pode alterar o status dos **seus próprios cartões**.
+- **Tipos de cartão:**  
+  - **COMUM** – uso padrão.  
+  - **ESTUDANTE** – desconto ou benefícios para estudantes.  
+  - **TRABALHADOR** – uso específico para trabalhadores.
+- **Relacionamento:**  
+  - Cada usuário pode possuir **0 ou mais cartões** (1 usuário → N cartões).
+
+ 
 
 ### 3. Segurança
 - Autenticação via **Spring Security**.  
@@ -32,13 +53,16 @@ Criar uma aplicação full-stack para **gerenciar usuários e cartões de transp
 ## 🔹 Tecnologias Utilizadas
 
 ### Backend
-- Java 8+ / Spring Boot  
+- Java 17+ / Spring Boot 3+  
 - Spring Data JPA / Hibernate  
-- PostgreSQL (ou outro banco SQL)
+- PostgreSQL 
 - Swagger
-- Migrações com Flyway (opcional)  
+- Migrações com Flyway
+- Segurança com Spring Security + JWT  
+- MapStruct para mapeamento entre DTOs e entidades  
 - Estrutura em camadas: Controller → Service → Repository → Mapper → DTO → Model  
-- Build com Maven  
+- Build com Maven
+- **Tratamento de Erros:** Exceções personalizadas e globais com `@ControllerAdvice`
 
 ---
 
