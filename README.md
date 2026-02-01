@@ -5,7 +5,7 @@ Criar uma aplicação full-stack para **gerenciar usuários e cartões de transp
 
 ---
 
-### Repositório principal [Transcard](https://github.com/kleber-a/transcard.git)
+# Repositório principal [Transcard](https://github.com/kleber-a/transcard.git)
 
 ## ✅ Funcionalidades Principais
 
