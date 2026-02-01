@@ -37,8 +37,11 @@ public class SecurityConfigurations {
                         .requestMatchers(HttpMethod.POST, "/auth/register").permitAll()
 //                        .requestMatchers("/swagger-ui/**", "/v3/api-docs/**").permitAll()
                         .requestMatchers("/docs/**", "/v3/api-docs/**", "/swagger-ui/**").permitAll()
-                        .requestMatchers(HttpMethod.GET, "/users").hasRole("ADMIN")
-                        .requestMatchers(HttpMethod.GET, "/cards").hasRole("ADMIN")
+                        .requestMatchers(HttpMethod.GET, "/users", "/cards").hasRole("ADMIN")
+                        .requestMatchers(HttpMethod.PATCH, "/users", "/cards").hasAnyRole("ADMIN", "USER")
+                        .requestMatchers(HttpMethod.POST, "/users", "/cards").hasRole("ADMIN")
+                        .requestMatchers(HttpMethod.DELETE, "/users", "/cards").hasRole("ADMIN")
+
                         .anyRequest().authenticated()
                 )
                 .exceptionHandling(exceptions -> exceptions
