@@ -1,4 +1,4 @@
-# 🚌 Transcard Back End - Desafio Técnico (Resumo)
+# 🚌 Transcard - Back End (Resumo)
 
 ## 🔹 Objetivo
 Criar uma aplicação full-stack para **gerenciar usuários e cartões de transporte**, aplicando boas práticas de engenharia de software, arquitetura em camadas e design responsivo.
