@@ -7,7 +7,7 @@ Criar uma aplicação full-stack para **gerenciar usuários e cartões de transp
 
 # Repositório principal [Transcard](https://github.com/kleber-a/transcard.git)
 
-## ✅ Funcionalidades Principais
+## 🔹 Funcionalidades Principais
 
 ### 1. Gestão de Usuários
 - Consultar usuários (admin vê todos, usuário comum vê apenas o próprio).  
@@ -54,7 +54,7 @@ Criar uma aplicação full-stack para **gerenciar usuários e cartões de transp
 ---
 
 
-### 2️⃣ Rodando Localmente
+### Rodando Localmente
 
 ##### PostgreSQL
 
